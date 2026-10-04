@@ -1,0 +1,8 @@
+{
+  "name": "BSIAI 1:1 Dashboard",
+  "description": "BSIAI 1:1 mentorship dashboard with Google Meet attendance tracking, mentor directory, and Google Sheets sync.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

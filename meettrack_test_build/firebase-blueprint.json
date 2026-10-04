@@ -1,0 +1,90 @@
+{
+  "entities": {
+    "Trainer": {
+      "title": "Trainer",
+      "description": "Registered mentor details with Google Meet link and configuration",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "avatar": { "type": "string" },
+        "meetUrl": { "type": "string" },
+        "specialization": { "type": "string" },
+        "phone": { "type": "string" },
+        "slotDuration": { "type": "number" },
+        "status": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "meetUrl"]
+    },
+    "Slot": {
+      "title": "Slot",
+      "description": "Mentorship schedule slot",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "trainerId": { "type": "string" },
+        "trainerName": { "type": "string" },
+        "date": { "type": "string" },
+        "startTime": { "type": "string" },
+        "endTime": { "type": "string" },
+        "studentName": { "type": "string" },
+        "studentEmail": { "type": "string" },
+        "topic": { "type": "string" },
+        "status": { "type": "string" },
+        "meetUrl": { "type": "string" },
+        "userEmail": { "type": "string" }
+      },
+      "required": ["id", "trainerId", "date", "startTime", "endTime"]
+    },
+    "AttendanceLog": {
+      "title": "AttendanceLog",
+      "description": "Session attendance and tracking record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "slotId": { "type": "string" },
+        "trainerId": { "type": "string" },
+        "trainerName": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "mentorJoinedAt": { "type": "string" },
+        "mentorLeftAt": { "type": "string" },
+        "studentJoinedAt": { "type": "string" },
+        "studentLeftAt": { "type": "string" },
+        "status": { "type": "string" },
+        "totalOverlapMinutes": { "type": "number" },
+        "userEmail": { "type": "string" }
+      },
+      "required": ["id", "slotId", "trainerId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/trainers/{trainerId}": {
+      "schema": "Trainer",
+      "description": "User's registered trainers and mentors"
+    },
+    "/users/{userId}/slots/{slotId}": {
+      "schema": "Slot",
+      "description": "User's mentorship schedule slots"
+    },
+    "/users/{userId}/attendanceLogs/{logId}": {
+      "schema": "AttendanceLog",
+      "description": "User's attendance tracking records"
+    },
+    "/trainers/{trainerId}": {
+      "schema": "Trainer",
+      "description": "Global/Shared mentors collection"
+    },
+    "/slots/{slotId}": {
+      "schema": "Slot",
+      "description": "Global/Shared slots collection"
+    },
+    "/attendanceLogs/{logId}": {
+      "schema": "AttendanceLog",
+      "description": "Global/Shared attendance logs"
+    }
+  }
+}
